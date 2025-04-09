@@ -2,13 +2,13 @@ import React from "react";
 import { notFound } from "next/navigation";
 import client from "@/tina/__generated__/client";
 import Layout from "@/components/layout/layout";
-import ClientPage from "./[...urlSegments]/client-page";
+import ClientPage from "../[...urlSegments]/client-page";
 
 export const revalidate = 300;
 
-export default async function Home() {
+export default async function ContactPage() {
   const data = await client.queries.page({
-    relativePath: `home.mdx`,
+    relativePath: "contact.mdx", // Assuming content file is contact.mdx
   });
 
   if (!data.data.page) {

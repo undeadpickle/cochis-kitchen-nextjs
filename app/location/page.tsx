@@ -2,13 +2,15 @@ import React from "react";
 import { notFound } from "next/navigation";
 import client from "@/tina/__generated__/client";
 import Layout from "@/components/layout/layout";
-import ClientPage from "./[...urlSegments]/client-page";
+import ClientPage from "../[...urlSegments]/client-page";
 
 export const revalidate = 300;
 
-export default async function Home() {
+// TODO: Import and use components from the /components directory
+
+export default async function LocationPage() {
   const data = await client.queries.page({
-    relativePath: `home.mdx`,
+    relativePath: "location.mdx", // Assuming content file is location.mdx
   });
 
   if (!data.data.page) {
