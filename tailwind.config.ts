@@ -1,231 +1,161 @@
-import colors from "tailwindcss/colors";
+import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
+import animate from "tailwindcss-animate";
 
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./components/**/*.{js,ts,jsx,tsx}", "./app/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "class",
-  safelist: ["dark", "light"],
+export default {
+  darkMode: ["class"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./hooks/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  prefix: "",
   theme: {
-    colors: {
-      transparent: "transparent",
-      current: "currentColor",
-      black: colors.black,
-      white: colors.white,
-      teal: colors.cyan,
-      green: colors.emerald,
-      red: colors.rose,
-      purple: colors.purple,
-      pink: colors.pink,
-      yellow: colors.yellow,
-      gray: {
-        50: "#F6F6F9",
-        100: "#EDECF3",
-        150: "#E6E3EF",
-        200: "#E1DDEC",
-        250: "#C9C5D5",
-        300: "#b2adbe",
-        400: "#918c9e",
-        500: "#716c7f",
-        600: "#565165",
-        700: "#433e52",
-        800: "#363145",
-        900: "#252336",
-        1000: "#1c1b2e",
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
       },
-      blue: {
-        50: "#DCEEFF",
-        100: "#B4DBFF",
-        200: "#85C5FE",
-        300: "#4EABFE",
-        400: "#2296fe",
-        500: "#0084FF",
-        600: "#0574e4",
-        700: "#0D5DBD",
-        800: "#144696",
-        900: "#1D2C6C",
-        1000: "#241748",
-      },
-      orange: {
-        200: "#EB7752",
-        300: "#EA6C45",
-        400: "#E85C30",
-        500: "#EC4815",
-        600: "#DC4419",
-        700: "#D04017",
-        800: "#C1360F",
-      },
-    },
-    screens: {
-      sm: "600px",
-      md: "900px",
-      lg: "1200px",
-      xl: "1500px",
-      "2xl": "1800px",
-    },
-    fontSize: {
-      xs: ".875rem",
-      sm: "1rem",
-      base: "1.125rem",
-      lg: "1.25rem",
-      xl: "1.5rem",
-      "2xl": "1.75rem",
-      "3xl": "2rem",
-      "4xl": "2.5rem",
-      "5xl": "3.25rem",
-      "6xl": "4rem",
-      "7xl": "5rem",
-      "8xl": "6rem",
-    },
-    borderWidth: {
-      DEFAULT: "3px",
-      0: "0",
-      2: "2px",
-      3: "3px",
-      4: "4px",
     },
     extend: {
-      textDecoration: ["active"],
-      opacity: {
-        7: ".075",
-        15: ".15",
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        sidebar: {
+          DEFAULT: "hsl(var(--sidebar-background))",
+          foreground: "hsl(var(--sidebar-foreground))",
+          primary: "hsl(var(--sidebar-primary))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          accent: "hsl(var(--sidebar-accent))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+          border: "hsl(var(--sidebar-border))",
+          ring: "hsl(var(--sidebar-ring))",
+        },
+        cochi: {
+          red: "#7F120B",
+          "red-light": "#99251E",
+          "red-dark": "#650E09",
+          cream: "#FEF7E6",
+          "cream-darker": "#F5E8C7",
+          brown: "#5D4037",
+          "brown-light": "#7D5B4F",
+          tan: "#D7CCC8",
+          green: "#A5D6A7",
+          "green-dark": "#81C784",
+          black: "#2D2A2A",
+          gold: "#D4AF37",
+          sage: "#BCCC9A",
+          accent: "#E09F3E",
+        },
       },
-      maxWidth: {
-        "8xl": "86rem",
-      },
-      spacing: {
-        128: "32rem",
-      },
-      zIndex: {
-        "-1": "-1",
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
-        nunito: ["var(--font-nunito)", ...fontFamily.sans],
-        lato: ["var(--font-lato)", ...fontFamily.sans],
+        serif: ["var(--font-serif)", ...fontFamily.serif],
+        display: ["var(--font-display)", ...fontFamily.sans],
       },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            pre: {
-              color: theme("colors.gray.700"),
-              backgroundColor: theme("colors.gray.100"),
-              lineHeight: 1.5,
-            },
-            code: {
-              backgroundColor: theme("colors.gray.100"),
-              padding: "0.25rem",
-              borderRadius: "3px",
-              margin: "-0.25rem 1px",
-            },
-            "code::before": {
-              content: '""',
-            },
-            "code::after": {
-              content: '""',
-            },
-            "p:first-of-type": {
-              fontSize: "1.125rem",
-            },
-          },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        tint: {
-          css: {
-            pre: {
-              color: theme("colors.gray.800"),
-              backgroundColor: theme("colors.gray.150"),
-            },
-          },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
-        lg: {
-          css: {
-            pre: {
-              lineHeight: 1.5,
-            },
-            "p:first-of-type": {
-              fontSize: "1.365rem",
-            },
-          },
+        "fade-in": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        xl: {
-          css: {
-            pre: {
-              lineHeight: 1.5,
-            },
-            "p:first-of-type": {
-              fontSize: "1.365rem",
-            },
-          },
+        "fade-out": {
+          "0%": { opacity: "1", transform: "translateY(0)" },
+          "100%": { opacity: "0", transform: "translateY(10px)" },
         },
-        dark: {
-          css: {
-            color: theme("colors.gray.200"),
-            '[class~="lead"]': { color: theme("colors.gray.400") },
-            a: { color: theme("colors.gray.100") },
-            strong: { color: theme("colors.gray.100") },
-            "ul > li::before": { backgroundColor: theme("colors.gray.700") },
-            hr: { borderColor: theme("colors.gray.800") },
-            blockquote: {
-              color: theme("colors.gray.100"),
-              borderLeftColor: theme("colors.gray.800"),
-            },
-            h1: { color: theme("colors.gray.100") },
-            h2: { color: theme("colors.gray.100") },
-            h3: { color: theme("colors.gray.100") },
-            h4: { color: theme("colors.gray.100") },
-            code: {
-              color: theme("colors.gray.100"),
-              backgroundColor: theme("colors.gray.1000"),
-            },
-            "a code": { color: theme("colors.gray.100") },
-            pre: {
-              color: theme("colors.gray.200"),
-              backgroundColor: theme("colors.gray.900"),
-            },
-            thead: {
-              color: theme("colors.gray.100"),
-              borderBottomColor: theme("colors.gray.700"),
-            },
-            "tbody tr": { borderBottomColor: theme("colors.gray.800") },
-          },
+        "scale-in": {
+          "0%": { transform: "scale(0.95)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
         },
-        primary: {
-          css: {
-            color: theme("colors.gray.50"),
-            '[class~="lead"]': { color: theme("colors.gray.400") },
-            a: { color: theme("colors.gray.100") },
-            strong: { color: theme("colors.gray.100") },
-            "ul > li::before": { backgroundColor: theme("colors.gray.700") },
-            hr: { borderColor: theme("colors.gray.800") },
-            blockquote: {
-              color: theme("colors.gray.100"),
-              borderLeftColor: theme("colors.gray.800"),
-            },
-            h1: { color: theme("colors.gray.100") },
-            h2: { color: theme("colors.gray.100") },
-            h3: { color: theme("colors.gray.100") },
-            h4: { color: theme("colors.gray.100") },
-            code: {
-              color: theme("colors.gray.100"),
-              backgroundColor: "rgba(0,0,0,0.15)",
-            },
-            "a code": { color: theme("colors.gray.100") },
-            pre: {
-              color: theme("colors.gray.200"),
-              backgroundColor: "rgba(0,0,0,0.15)",
-            },
-            thead: {
-              color: theme("colors.gray.100"),
-              borderBottomColor: theme("colors.gray.700"),
-            },
-            "tbody tr": { borderBottomColor: theme("colors.gray.800") },
-          },
+        "scale-out": {
+          from: { transform: "scale(1)", opacity: "1" },
+          to: { transform: "scale(0.95)", opacity: "0" },
         },
-      }),
+        "slide-in": {
+          "0%": { transform: "translateY(100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+        "slide-out": {
+          "0%": { transform: "translateY(0)" },
+          "100%": { transform: "translateY(100%)" },
+        },
+        "slide-in-right": {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        "slide-out-right": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+        "slide-up-fade": {
+          "0%": { opacity: "0", transform: "translateY(8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "slide-down-fade": {
+          "0%": { opacity: "0", transform: "translateY(-8px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.3s ease-out",
+        "fade-out": "fade-out 0.3s ease-out",
+        "scale-in": "scale-in 0.2s ease-out",
+        "scale-out": "scale-out 0.2s ease-out",
+        "slide-in": "slide-in 0.3s ease-out",
+        "slide-out": "slide-out 0.3s ease-out",
+        "slide-in-right": "slide-in-right 0.3s ease-out",
+        "slide-out-right": "slide-out-right 0.3s ease-out",
+        "slide-up-fade": "slide-up-fade 0.4s ease-out",
+        "slide-down-fade": "slide-down-fade 0.4s ease-out",
+      },
     },
   },
-  variants: {
-    extend: { typography: ["tint", "dark", "primary"] },
-  },
-  plugins: [require("@tailwindcss/typography")],
-};
+  plugins: [animate],
+} satisfies Config;

@@ -6,24 +6,24 @@ This checklist outlines the phases and tasks for migrating the Cochi's Kitchen w
 
 ### 1. New Project Setup (Next.js + TinaCMS)
 
-- [ ] Create new Next.js project using `create-tina-app` (See Plan 1.1)
-- [ ] Configure environment variables (`.env.local`) (See Plan 1.2)
-- [ ] Verify `package.json` scripts (See Plan 1.3)
-- [ ] Configure `.gitignore` (See Plan 1.4)
-- [ ] Confirm local dev server and basic Tina admin access (See Plan 1.5)
+- [x] Create new Next.js project using `create-tina-app` (See Plan 1.1)
+- [x] Configure environment variables (`.env.local`) (See Plan 1.2)
+- [x] Verify `package.json` scripts (See Plan 1.3)
+- [x] Configure `.gitignore` (See Plan 1.4)
+- [x] Confirm local dev server and basic Tina admin access (See Plan 1.5)
 
 ### 2. Configuration & Content Migration
 
-- [ ] Copy and adapt `tina/config.ts` (See Plan 2.1)
-- [ ] Copy `content/` directory (See Plan 2.2)
-- [ ] Regenerate Tina types (See Plan 2.3)
+- [x] Copy and adapt `tina/config.ts` (See Plan 2.1)
+- [x] Copy `content/` directory (See Plan 2.2)
+- [x] Regenerate Tina types (See Plan 2.3)
 
 ### 3. Asset, Code & Style Migration
 
-- [ ] Copy `public/` assets (See Plan 3.1)
-- [ ] Copy components, hooks, libs (See Plan 3.2)
+- [x] Copy `public/` assets (See Plan 3.1)
+- [x] Copy components, hooks, libs (See Plan 3.2)
 - [ ] Adapt migrated code (Imports, Routing, Fetching Logic, Client Components) (See Plan 3.3)
-- [ ] Migrate & Adapt Styles (Tailwind config, Global CSS) (See Plan 3.4)
+- [x] Migrate & Adapt Styles (Tailwind config, Global CSS) (See Plan 3.4)
 - [ ] Install necessary dependencies & remove unused ones (See Plan 3.5)
 
 ### 4. Page Reconstruction & Data Integration

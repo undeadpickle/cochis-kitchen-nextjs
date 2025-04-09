@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&family=Marcellus&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 0 73% 27%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 36 43% 95%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 36 80% 56%;
+    --accent-foreground: 357 89% 45%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 357 89% 45%;
+
+    --radius: 0.5rem;
+
+    --font-sans: "Work Sans", sans-serif;
+    --font-serif: "Playfair Display", serif;
+    --font-display: "Marcellus", serif;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 0 63% 31%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Hide scrollbar for the entire page */
+  html,
+  body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* Hide webkit scrollbar */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans text-base leading-relaxed;
+  }
+
+  h1 {
+    @apply font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight;
+  }
+
+  h2 {
+    @apply font-serif text-3xl md:text-4xl font-semibold tracking-tight leading-tight;
+  }
+
+  h3 {
+    @apply font-serif text-2xl md:text-3xl font-semibold tracking-tight;
+  }
+
+  h4 {
+    @apply font-serif text-xl md:text-2xl font-medium;
+  }
+
+  h5,
+  h6 {
+    @apply font-serif text-lg md:text-xl font-medium;
+  }
+
+  p {
+    @apply my-4 leading-relaxed;
+  }
+
+  .subtitle {
+    @apply font-serif text-sm uppercase tracking-widest font-medium;
+  }
+
+  .lead {
+    @apply text-lg md:text-xl font-normal leading-relaxed;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-16 px-4 md:px-8 lg:px-16 overflow-hidden;
+  }
+
+  .nav-link {
+    @apply relative text-cochi-cream opacity-90 hover:opacity-100 transition-opacity duration-200 px-3 py-2;
+  }
+
+  .nav-link::after {
+    content: "";
+    @apply absolute w-0 h-0.5 bg-cochi-gold left-1/2 -translate-x-1/2 bottom-0 transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-2/3;
+  }
+
+  .nav-link.active::after {
+    @apply w-2/3;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-panel {
+    @apply bg-black/40 backdrop-blur-md rounded-lg border border-white/20 shadow-lg;
+  }
+
+  .subtle-shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-md;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-cochi-red hover:bg-cochi-red-light text-white py-2.5 px-5 rounded-md shadow-sm transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-cochi-cream hover:bg-cochi-cream-darker text-cochi-brown py-2.5 px-5 rounded-md shadow-sm transition-all duration-200;
+  }
+
+  .btn-accent {
+    @apply bg-cochi-gold hover:bg-cochi-gold/90 text-white py-2.5 px-5 rounded-md shadow-sm transition-all duration-200;
+  }
+}
+
+/* Custom text colors for different backgrounds */
+.bg-white p,
+.bg-white li {
+  @apply text-gray-700;
+}
+
+.bg-cochi-cream p,
+.bg-cochi-cream li,
+.bg-gray-50 p,
+.bg-gray-50 li {
+  @apply text-cochi-brown/90;
+}
+
+.bg-white h1,
+.bg-white h2,
+.bg-white h3,
+.bg-white h4,
+.bg-white h5,
+.bg-white h6 {
+  @apply text-cochi-brown;
+}
+
+.bg-cochi-cream h1,
+.bg-cochi-cream h2,
+.bg-cochi-cream h3,
+.bg-cochi-cream h4,
+.bg-cochi-cream h5,
+.bg-cochi-cream h6,
+.bg-gray-50 h1,
+.bg-gray-50 h2,
+.bg-gray-50 h3,
+.bg-gray-50 h4,
+.bg-gray-50 h5,
+.bg-gray-50 h6 {
+  @apply text-cochi-brown;
+}
+
+/* Add specific rules for footer with red background */
+.bg-gradient-to-br.from-cochi-red p,
+.bg-gradient-to-br.from-cochi-red li,
+.bg-gradient-to-br.from-cochi-red h1,
+.bg-gradient-to-br.from-cochi-red h2,
+.bg-gradient-to-br.from-cochi-red h3,
+.bg-gradient-to-br.from-cochi-red h4,
+.bg-gradient-to-br.from-cochi-red h5,
+.bg-gradient-to-br.from-cochi-red h6,
+.bg-gradient-to-br.from-cochi-red span,
+.bg-gradient-to-br.from-cochi-red a {
+  @apply text-white;
+}
+
+/* Ensure text in Hero section is white */
+section#home h1,
+section#home h2,
+section#home p,
+section#home span,
+section#home a:not(.btn-primary):not([class*="bg-white"]) {
+  @apply text-white !important;
+}
+
+/* Image caption overlay specific styles */
+.image-caption-overlay p {
+  @apply text-white;
+}
+
+.image-caption-overlay p:last-child {
+  @apply text-cochi-gold;
+}
+
+/* ---------------------------------------------------------
+   Force Hardware Acceleration for Mobile Navigation
+   ---------------------------------------------------------
+   Apply this rule to the mobile nav container to ensure it
+   repaints properly during scroll.
+--------------------------------------------------------- */
+/* .mobile-nav {
+  will-change: transform;
+  transform: translateZ(0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+}
+ */

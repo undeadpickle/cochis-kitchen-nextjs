@@ -1,5 +1,10 @@
 fragment LayoutQueryFragment on Query {
-  global(relativePath: "index.json") {
-    ...GlobalParts
+  global(relativePath: "settings.json") {
+    headerPhoneNumber
+    socialLinks {
+      platform
+      url
+    }
+    footerText
   }
 }
