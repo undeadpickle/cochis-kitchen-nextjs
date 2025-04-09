@@ -28,9 +28,9 @@ This checklist outlines the phases and tasks for migrating the Cochi's Kitchen w
 
 ### 4. Page Reconstruction & Data Integration
 
-- [ ] Rebuild page structure using Next.js routing (See Plan 4.1)
-- [ ] Implement Next.js server-side data fetching with `client.queries` (See Plan 4.2)
-- [ ] Integrate `useTina` in Client Components for visual editing (See Plan 4.3)
+- [x] Rebuild page structure using Next.js routing (See Plan 4.1)
+- [x] Implement Next.js server-side data fetching with `client.queries` (See Plan 4.2)
+- [x] Integrate `useTina` in Client Components for visual editing (See Plan 4.3)
 
 ### 5. Deployment Setup (Netlify)
 
