@@ -1,41 +1,15 @@
 {
-  "header": {
-    "icon": {
-      "name": "Tina",
-      "color": "orange",
-      "style": "float"
+  "siteName": "Cochi's Kitchen",
+  "headerPhoneNumber": "(555) 123-4567",
+  "socialLinks": [
+    {
+      "platform": "Facebook",
+      "url": "https://facebook.com/"
     },
-    "name": "Tina Starter",
-    "color": "default",
-    "nav": [
-      {
-        "href": "",
-        "label": "Home"
-      },
-      {
-        "href": "about",
-        "label": "About"
-      },
-      {
-        "href": "posts",
-        "label": "Blog"
-      }
-    ]
-  },
-  "footer": {
-    "color": "default",
-    "social": {
-      "facebook": "",
-      "twitter": "https://x.com/TinaCMS",
-      "instagram": "",
-      "linkedIn": "https://www.linkedin.com/company/tinacms",
-      "github": "https://github.com/tinacms/tinacms",
-      "youtube": "https://www.youtube.com/@TinaCMS"
+    {
+      "platform": "Instagram",
+      "url": "https://instagram.com/"
     }
-  },
-  "theme": {
-    "color": "blue",
-    "font": "sans",
-    "darkMode": "light"
-  }
+  ],
+  "footerText": "\\[object Object]\n"
 }
