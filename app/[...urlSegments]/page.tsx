@@ -19,6 +19,7 @@ const STATIC_FILE_EXTENSIONS = [
   "txt",
   "xml",
   "webmanifest",
+  "json",
 ];
 
 export default async function Page({
@@ -29,15 +30,15 @@ export default async function Page({
   const requestedPath = params.urlSegments.join("/");
   const potentialExtension = requestedPath.split(".").pop()?.toLowerCase();
 
-  // Check if the path looks like a static file request
+  // Check if the path starts with _next/ OR looks like a static file request
   if (
-    potentialExtension &&
-    STATIC_FILE_EXTENSIONS.includes(potentialExtension)
+    requestedPath.startsWith("_next/") ||
+    (potentialExtension && STATIC_FILE_EXTENSIONS.includes(potentialExtension))
   ) {
     notFound(); // Trigger a 404 if it looks like a static file
   }
 
-  // Proceed with TinaCMS query only if it's not a likely static file
+  // Proceed with TinaCMS query only if it's not an internal path or likely static file
   const data = await client.queries.page({
     relativePath: `${requestedPath}.mdx`,
   });

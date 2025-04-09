@@ -24,7 +24,7 @@ This checklist outlines the phases and tasks for migrating the Cochi's Kitchen w
 - [x] Copy components, hooks, libs (See Plan 3.2)
 - [ ] Adapt migrated code (Imports, Routing, Fetching Logic, Client Components) (See Plan 3.3)
 - [x] Migrate & Adapt Styles (Tailwind config, Global CSS) (See Plan 3.4)
-- [ ] Install necessary dependencies & remove unused ones (See Plan 3.5)
+- [x] Install necessary dependencies & remove unused ones (See Plan 3.5)
 
 ### 4. Page Reconstruction & Data Integration
 
