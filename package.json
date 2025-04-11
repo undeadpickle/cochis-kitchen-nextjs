@@ -1,5 +1,5 @@
 {
-  "name": ".",
+  "name": "cochis-kitchen-nextjs",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -17,6 +17,7 @@
     "@types/node": "^22.13.10",
     "@types/react": "^18.3.18",
     "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
     "postcss": "^8.5.3",
     "typescript": "^5.8.2"
   },

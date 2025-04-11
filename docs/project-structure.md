@@ -9,64 +9,82 @@ cochis-kitchen-nextjs/
 ├── .next/ # Next.js build output (ignored)
 ├── .vscode/ # VS Code settings (optional)
 ├── README.md # Project README
-├── components.json # shadcn/ui configuration
-├── content/ # TinaCMS content files (Markdown)
+├── app/ # Next.js App Router directory
+│ ├── globals.css # Global styles
+│ ├── layout.tsx # Root layout component
+│ ├── page.tsx # Homepage route component (Server Component)
+│ ├── home-page-client.tsx # Client component for homepage
+│ ├── about/
+│ │ └── page.tsx
+│ ├── contact/
+│ │ └── page.tsx
+│ ├── location/
+│ │ └── page.tsx
+│ ├── menu/
+│ │ └── page.tsx
+│ ├── reviews/
+│ │ └── page.tsx
+│ └── [...urlSegments]/ # Catch-all route
+│ ├── client-page.tsx # Generic client component
+│ └── page.tsx
+├── components/ # Reusable React components
+│ ├── common/ # Shared common components (Example - adjust as needed)
+│ │ └── ImagePopup.tsx
+│ ├── layout/ # Layout specific components
+│ │ ├── container.tsx
+│ │ ├── layout.tsx
+│ │ └── layout-context.tsx
+│ ├── nav/ # Navigation components
+│ │ ├── footer.tsx
+│ │ ├── header.tsx
+│ │ └── nav-items.tsx # (If needed later)
+│ ├── sections/ # Page section components (Migrated - verify/adjust content)
+│ │ ├── about.tsx
+│ │ ├── contact.tsx
+│ │ ├── features.tsx # (If used)
+│ │ ├── hero.tsx
+│ │ ├── location.tsx
+│ │ ├── menu.tsx
+│ │ └── testimonials.tsx # (If used)
+│ ├── ui/ # shadcn/ui components (or other UI library) - Examples
+│ │ ├── button.tsx
+│ │ └── card.tsx
+│ └── blocks.tsx # Generic block renderer (from starter - likely remove/refactor)
+│ └── icon.tsx # Icon component (from starter - verify usage)
+│ └── raw-renderer.tsx # Raw data renderer (from starter - remove?)
+├── components.json # shadcn/ui configuration (If using)
+├── content/ # TinaCMS content files
+│ ├── global/
+│ │ └── index.json # Global site settings
 │ └── pages/
-│ ├── about.md
-│ ├── contact.md
-│ ├── features.md
-│ ├── footer.md
-│ ├── hero.md
-│ ├── location.md
-│ ├── offerings.md
-│ └── reviews.md
+│ ├── home.mdx # Use .mdx for potential component embedding
+│ ├── about.mdx # (Placeholder - to be created)
+│ ├── contact.mdx # (Placeholder - to be created)
+│ ├── location.mdx # (Placeholder - to be created)
+│ ├── offerings.mdx # (Placeholder - to be created)
+│ └── reviews.mdx # (Placeholder - to be created)
 ├── docs/ # Project documentation (PRD, guides, etc.)
-│ ├── cochis-kitchen-prd.md
-│ └── tech-stack.md
+│ ├── prd.md # (was cochis-kitchen-prd.md)
+│ ├── progress-checklist.md
+│ ├── project-structure.md # (This file)
+│ └── tina-migration-plan.md
+├── hooks/ # Custom React hooks (Migrated)
+│ └── use-mobile.tsx # (Example - verify)
+├── lib/ # Utility functions (Migrated)
+│ └── utils.ts # (Example - verify)
 ├── node_modules/ # Project dependencies (ignored)
 ├── next-env.d.ts # Next.js TypeScript declarations
 ├── next.config.mjs # Next.js configuration
-├── package-lock.json # npm lock file (or bun.lockb, yarn.lock)
+├── package-lock.json # npm lock file
 ├── package.json # Project metadata and dependencies
 ├── postcss.config.js # PostCSS configuration (for Tailwind)
 ├── public/ # Static assets (images, icons, robots.txt)
 │ ├── favicon.ico
-│ ├── images/
+│ ├── images/ # (Migrated content - verify)
 │ │ ├── README.md
 │ │ ├── cochis_kitchen_logo.svg
-│ │ ├── cochis_kitchen_logomark.svg
-│ │ ├── hero/
-│ │ │ └── hero-01.png # ... other hero images
-│ │ └── menu/
-│ │ └── menu-breakfast-burrito.png # ... other menu images
+│ │ └── cochis_kitchen_logomark.svg
 │ └── robots.txt
-├── src/ # Source code (can be root level too)
-│ ├── app/ # Next.js App Router directory
-│ │ ├── globals.css # Global styles
-│ │ ├── layout.tsx # Root layout component
-│ │ └── page.tsx # Homepage route component (Server Component)
-│ ├── components/ # Reusable React components
-│ │ ├── common/ # Shared common components
-│ │ │ ├── CategoryDropdown.tsx
-│ │ │ └── ImagePopup.tsx
-│ │ ├── sections/ # Page section components
-│ │ │ ├── About.tsx
-│ │ │ ├── Contact.tsx
-│ │ │ ├── Footer.tsx
-│ │ │ ├── Hero.tsx
-│ │ │ ├── Location.tsx
-│ │ │ ├── Menu.tsx
-│ │ │ ├── NavBar.tsx
-│ │ │ ├── SectionTitle.tsx
-│ │ │ ├── Testimonials.tsx
-│ │ │ └── TopBar.tsx
-│ │ └── ui/ # shadcn/ui components (Button, Card, etc.)
-│ │ ├── button.tsx
-│ │ └── card.tsx
-│ ├── hooks/ # Custom React hooks
-│ │ └── use-mobile.tsx
-│ └── lib/ # Utility functions
-│ └── utils.ts
 ├── tailwind.config.ts # Tailwind CSS configuration
 ├── tina/ # TinaCMS configuration and generated client
 │ ├── **generated**/ # Auto-generated Tina types/client (ignored)

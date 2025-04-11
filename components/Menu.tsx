@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionTitle from "./SectionTitle";
@@ -27,7 +29,7 @@ import CategoryDropdown, {
   Category,
 } from "@/components/common/CategoryDropdown";
 import ImagePopup from "@/components/common/ImagePopup";
-import type { PageQuery } from "../../tina/__generated__/types";
+import type { PageQuery } from "@/tina/__generated__/types";
 
 // Define proper type for menu items
 interface MenuItem {
@@ -207,6 +209,9 @@ const Menu: React.FC<MenuProps> = ({ content }) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
 
+  // Access menu section data from the content prop
+  const menuData = content?.menu;
+
   // Check if we're on mobile
   useEffect(() => {
     const checkIsMobile = () => {
@@ -291,8 +296,8 @@ const Menu: React.FC<MenuProps> = ({ content }) => {
     <section id="menu" className="py-16 bg-cochi-cream">
       <div className="container mx-auto px-4">
         <SectionTitle
-          title={content.menuHighlightsTitle || "Menu Highlights"}
-          subtitle={content.offeringsTitle || "Our Offerings"}
+          subtitle={menuData?.sectionLabel || "Our Offerings"}
+          title={menuData?.title || "Fresh from the Kitchen"}
           align="center"
           className="mb-8 md:mb-12"
         />
@@ -381,16 +386,20 @@ const Menu: React.FC<MenuProps> = ({ content }) => {
         </AnimatePresence>
 
         <div className="text-center mt-12 text-cochi-brown/80">
-          <p className="mb-3 text-base">{content.menuFooterText}</p>
-          <a
-            href="https://www.facebook.com/cochiskitchen/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-cochi-red hover:text-cochi-red-dark font-medium transition-colors duration-200 group"
-          >
-            {content.facebookSpecialsLinkText}
-            <ExternalLink className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-          </a>
+          <p className="mb-3 text-base">
+            {"See our Facebook page for daily specials!"}
+          </p>
+          <div className="mt-4 text-center">
+            <a
+              href="https://www.facebook.com/cochiskitchen/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-cochi-red hover:text-cochi-red-dark font-medium text-sm transition-colors"
+            >
+              {"Follow us on Facebook"}
+              <ExternalLink size={14} />
+            </a>
+          </div>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 {
-  "siteName": "Cochi's Kitchen",
+  "siteName": "Cochi's Kitchen - Test!!",
   "headerPhoneNumber": "(555) 123-4567",
   "socialLinks": [
     {
@@ -11,5 +11,5 @@
       "url": "https://instagram.com/"
     }
   ],
-  "footerText": "\\[object Object]\n"
+  "footerText": "Simple Footer Text © 2024 Test\n"
 }

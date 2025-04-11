@@ -15,14 +15,13 @@ This document outlines the technologies planned for the Cochi's Kitchen website 
 - **Core Library**: tinacms
 - **React Integration**: tinacms/dist/react (for useTina hook), tinacms/dist/rich-text (for TinaMarkdown component)
 - **CLI Tool**: @tinacms/cli (for setup, local dev server, builds)
-- **Data Fetching**: TinaCMS Client (tina/**generated**/client) via GraphQL, using staticRequest within Next.js data fetching methods.
-- **Content Storage**: Git (via GitHub - new repository TBD)
-- **Content Formats**: Markdown (.md), JSON (.json)
+- **Data Fetching**: TinaCMS Client (tina/**generated**/client) via GraphQL.
+- **Content Storage**: Git (via GitHub)
+- **Content Formats**: Markdown (.mdx, .md), JSON (.json)
 
 ## Frontend Libraries
 
 - **UI Components**: shadcn/ui (with Radix UI primitives)
-- **Component Documentation**: Storybook 8.x
 - **Form Handling**: React Hook Form 7.x with Zod 3.x validation
 - **Animation**: Framer Motion 10.x, vaul (Drawer UI)
 - **Icons**: Lucide React, React Icons
@@ -30,7 +29,7 @@ This document outlines the technologies planned for the Cochi's Kitchen website 
 - **Carousel**: Embla Carousel
 - **Date Handling**: date-fns
 - **Theme Switching**: next-themes (Well-suited for Next.js)
-- **Image Optimization**: React Lazy Load Image Component, sharp (Potentially replaced/supplemented by Next.js Image component)
+- **Image Optimization**: Prefer Next.js Image component. (`react-lazy-load-image-component`, `sharp` installed but likely superseded).
 - **Resizable Panels**: React Resizable Panels
 - **Cookie Consent**: React Cookie Consent
 - **Data Visualization**: Recharts (available but not currently used)
@@ -43,15 +42,6 @@ This document outlines the technologies planned for the Cochi's Kitchen website 
 - **ImagePopup**: Full-screen responsive image viewer with caption overlay and animations
 - **CategoryDropdown**: Filterable category navigation for menu items
 - **MenuCard**: Interactive food item card with featured item highlighting
-
-## Component Documentation (Storybook)
-
-- **Version**: Storybook 8.x
-- **Organization**: Structured in components, UI, and common folders
-- **Design System**: Color palette, typography, and spacing documentation
-- **Story Format**: Component Story Format (CSF) with TypeScript
-- **Testing Integration**: Vitest integration for component tests (May need config review for Next.js context)
-- **Features**: Autodocs
 
 ## Responsive Design
 
@@ -83,8 +73,7 @@ This document outlines the technologies planned for the Cochi's Kitchen website 
 - **Linting**: ESLint (Configured via next lint)
 - **Type Checking**: TypeScript
 - **Version Control**: Git (TinaCMS utilizes Git workflow heavily)
-- **Package Manager**: npm/Bun
-- **Component Development**: Storybook
+- **Package Manager**: npm
 - **Build Tooling**: Next.js CLI
 
 ## Performance Optimization
