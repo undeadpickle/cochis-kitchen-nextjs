@@ -13,7 +13,6 @@ import {
 } from "react-icons/fa6";
 import { AiFillInstagram } from "react-icons/ai";
 import { useLayout } from "../layout/layout-context";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
 import type { IconType } from "react-icons";
 
 const socialIconMap: { [key: string]: IconType } = {
@@ -34,6 +33,13 @@ export default function Footer() {
 
   const defaultFooterColorCss =
     "text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-900";
+
+  // Attempt to extract plain text directly (may need adjustments based on structure)
+  const plainFooterText =
+    footerText?.children?.[0]?.type === "p" &&
+    footerText.children[0].children?.[0]?.type === "text"
+      ? footerText.children[0].children[0].text
+      : "Default Footer Text";
 
   return (
     <footer className={cn(`bg-gradient-to-br`, defaultFooterColorCss)}>
@@ -72,7 +78,9 @@ export default function Footer() {
 
         {footerText && (
           <div className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
-            <TinaMarkdown content={footerText} />
+            {/* <TinaMarkdown content={footerText} /> */}
+            {/* Render plain text directly for debugging */}
+            {plainFooterText}
           </div>
         )}
       </Container>

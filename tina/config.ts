@@ -226,6 +226,28 @@ const schema = defineSchema({
             // Add other fields specific to the About Us section if needed
           ],
         },
+        // --- Add Menu Section Object ---
+        {
+          type: "object",
+          label: "Menu Section",
+          name: "menu", // Object name for the menu section
+          fields: [
+            {
+              type: "string",
+              label: "Section Label",
+              name: "sectionLabel",
+              description:
+                "Small label above the main title (e.g., 'Our Menu').",
+            },
+            {
+              type: "string",
+              label: "Title",
+              name: "title",
+              description: "Main title for the Menu section.",
+            },
+            // TODO: Add fields for categories/items later
+          ],
+        },
         // --- Menu Section (Example using Reference or Object List) ---
         /*
         // Option A: Simple Object List (if menu structure is fixed per page)

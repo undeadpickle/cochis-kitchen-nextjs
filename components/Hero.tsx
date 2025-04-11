@@ -1,7 +1,9 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { ArrowDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { PageQuery } from "../../tina/__generated__/types"; // Import generated types
+import type { PageQuery } from "@/tina/__generated__/types"; // Corrected path alias
 
 /**
  * Type for the props expected by Hero
@@ -11,6 +13,10 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ content }) => {
+  // --- DEBUG: Log component render ---
+  console.log("Hero Component: Rendering with content:", content);
+  // --- END DEBUG ---
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -90,9 +96,17 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
 
               {/* Dynamic Tagline from TinaCMS */}
               <h2 className="text-white text-2xl sm:text-2xl md:text-3xl font-light mb-5 sm:mb-6 text-shadow-sm leading-snug sm:leading-relaxed">
+                {/* DEBUG: Log tagline value */}
+                {
+                  (console.log(
+                    "Hero Component: Accessing tagline:",
+                    content.hero?.tagline
+                  ),
+                  null)
+                }
                 {/* Split tagline for potential styling (keeping existing split logic) */}
-                {content.headerTagline?.split("in Morgan Hill")[0]}
-                {content.headerTagline?.includes("in Morgan Hill") && (
+                {content.hero?.tagline?.split("in Morgan Hill")[0]}
+                {content.hero?.tagline?.includes("in Morgan Hill") && (
                   <>
                     in{" "}
                     <span className="text-cochi-gold font-medium">
@@ -111,18 +125,42 @@ const Hero: React.FC<HeroProps> = ({ content }) => {
                     : "translate-y-10 opacity-0"
                 )}
               >
-                <a
+                {/* DEBUG: Log ctaButtons value */}
+                {
+                  (console.log(
+                    "Hero Component: Accessing ctaButtons:",
+                    content.hero?.ctaButtons
+                  ),
+                  null)
+                }
+                {/* Map over ctaButtons if they exist */}
+                {content.hero?.ctaButtons?.map((button, index) => (
+                  <a
+                    key={index}
+                    href={button?.url || "#"} // Use button URL
+                    className={cn(
+                      "inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 sm:py-3.5 rounded-md shadow-lg w-fit text-lg sm:text-base font-medium transition-all duration-300 hover:shadow-xl",
+                      button?.variant === "primary"
+                        ? "btn-primary" // Assumes btn-primary class exists
+                        : "bg-white/10 backdrop-blur-sm text-white border border-white/30 hover:bg-white/20" // Default/secondary style
+                    )}
+                  >
+                    {button?.text} {/* Dynamic Button Text */}
+                  </a>
+                ))}
+                {/* Old button rendering commented out */}
+                {/* <a
                   href="#menu"
                   className="btn-primary inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 sm:py-3.5 rounded-md shadow-lg w-fit text-lg sm:text-base font-medium transition-all duration-300 hover:shadow-xl"
                 >
-                  {content.menuButtonText} {/* Dynamic Button Text */}
+                  {content.menuButtonText} 
                 </a>
                 <a
                   href="#location"
                   className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 sm:py-3.5 bg-white/10 backdrop-blur-sm text-white border border-white/30 rounded-md hover:bg-white/20 transition-all duration-300 shadow-lg w-fit text-lg sm:text-base font-medium"
                 >
-                  {content.findUsButtonText} {/* Dynamic Button Text */}
-                </a>
+                  {content.findUsButtonText} 
+                </a> */}
               </div>
             </div>
           </div>

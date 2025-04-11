@@ -143,6 +143,8 @@ Goal: Transfer the TinaCMS schema definition and Markdown content files from the
 
 **AI Task:** Review the copied config.ts. Ensure clientId references `process.env.NEXT_PUBLIC_TINACMS_CLIENT_ID` and token references `process.env.TINACMS_TOKEN`. Verify build.publicFolder and media.publicFolder are "public". The schema.collections should be valid, but consult Tina docs if issues arise with specific field types in the Next.js context.
 
+**Update Note:** Schema was significantly refactored based on best practices (global collection, page collection with objects) rather than directly migrating the minimal/commented-out old schema.
+
 **Reference:** Guide Section 6.A
 
 ### 2.2. Migrate content/ Directory
@@ -156,6 +158,8 @@ Goal: Transfer the TinaCMS schema definition and Markdown content files from the
 **Action:** Stop and restart the dev server (`npm run dev`).
 
 **Check:** Observe terminal output for successful Tina type generation based on the migrated config.ts. Address any errors reported during startup.
+
+**Update Note:** Initial run caused errors due to missing `content/global/index.json` and `content/pages/home.mdx` based on the refactored schema. Placeholder files were created. Subsequent errors related to frontmatter parsing and data caching were resolved.
 
 **Reference:** Guide Section 6.A (part 3)
 
@@ -183,6 +187,8 @@ Goal: Transfer static assets, reusable React code (components, hooks, utils), an
 - **Routing:** Remove react-router-dom (Link, useNavigate). Plan replacements using next/link, next/navigation.
 - **Data Fetching:** Remove useEffect logic used for initial page data fetching. Note components that will need data passed as props.
 - **Client Components:** Identify components using hooks/event handlers/browser APIs and add "use client"; directive.
+
+**Update Note:** Initial adaptation involved debugging Header, Footer, Layout components due to mismatch between migrated component expectations (theme object, specific header/footer structure in global data) and the refactored Tina schema. Data flow through LayoutContext was corrected.
 
 **Reference:** Guide Section 7.A (part 2)
 
@@ -218,15 +224,11 @@ Goal: Rebuild the website pages using Next.js routing, integrate migrated compon
 
 ### 4.3. Implement Visual Editing (useTina in Client Components)
 
-**Action (AI Task):**
+**Action:** Ensure client components receiving Tina data use the `useTina` hook correctly, passing `data`, `query`, and `variables`.
 
-- Create a Client Component (e.g., home-page-client.tsx) marked with "use client";.
-- Pass the full props object (data, query, variables) returned from client.queries in the Server Component (Step 4.2) to this Client Component.
-- Inside the Client Component, use the useTina hook with the received props: `const { data } = useTina(props);`.
-- Render the actual page sections/components using the data object returned by useTina, ensuring property access (e.g., data.page.title) matches your schema.
-- Define appropriate TypeScript types for the props passed between Server and Client components.
+**Update Note:** The `useTina` hook is implemented correctly in `HomePageClient` / generic `ClientPage`. Data flow is confirmed. However, a known issue exists where live updates are not reflected instantly on the site and require a hard refresh. This needs further investigation.
 
-**Reference:** Guide Section 8.C (Example provided)
+**Reference:** Guide Section 8.B
 
 ## Phase 5: Deployment Setup (Netlify)
 
